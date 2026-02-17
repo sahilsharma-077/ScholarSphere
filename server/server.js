@@ -30,3 +30,5 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+const userRoutes = require("./routes/user");
+app.use("/api/user", userRoutes);

@@ -89,8 +89,7 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-const express = require("express");
-const router = express.Router();
+
 const authController = require("../controllers/authController");
 
 router.post("/signup", authController.signup);

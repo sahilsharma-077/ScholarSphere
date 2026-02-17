@@ -40,4 +40,14 @@ ________________________________________________________________________________
 Problems faced:
 - Token validation initially failed due to incorrect header format
 - Middleware path issues resolved by creating proper middleware folder
+______________________________________________________________________________________
+
+## Day 5
+- Implemented user profile module
+- Created profile fetch API using JWT-based user identification
+- Added profile update API
+- Connected user routes to main server
+
+Problems faced:
+- Route path and middleware import issues resolved by restructuring routes folder
 
