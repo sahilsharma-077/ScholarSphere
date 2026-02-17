@@ -133,4 +133,19 @@ Problems faced:
 - Server initialization error due to using Express app before declaration
 - Socket events initially transmitted messages but did not persist them in the database
 - Resolved by correcting server initialization order and saving messages inside socket event handler
+__________________________________________________________________________________
+
+## Day 13
+- Initialized React frontend project and established folder structure (pages, components)
+- Integrated Lovable-generated UI components into the frontend project
+- Created Feed page and successfully rendered frontend UI skeleton
+- Connected Feed API to frontend using fetch and displayed real posts from backend
+- Implemented Follow button component and integrated frontend follow interaction with backend Follow API
+- Verified full backend–frontend pipeline for feed and follow interaction
+
+Problems faced:
+- Module resolution issues due to incorrect file paths and TypeScript/JavaScript file mismatch
+- Frontend server start errors caused by running commands outside the frontend directory
+- Feed initially displayed empty results due to missing follow relationships and test post data
+- Resolved by correcting file structure, restarting frontend server, and inserting valid follow/post records
 

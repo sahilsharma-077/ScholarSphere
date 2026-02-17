@@ -14,6 +14,8 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+const feedRoutes = require('./routes/feedRoutes');
+app.use('/api/feed', feedRoutes);
 
 /* CREATE HTTP SERVER AFTER app */
 const server = http.createServer(app);
