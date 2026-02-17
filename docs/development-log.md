@@ -84,4 +84,17 @@ ________________________________________________________________________________
 Problems faced:
 - Pagination understanding and testing issues
 - Resolved by implementing page query parameter testing (`?page=1`)
+________________________________________________________________________________
+
+## Day 9
+- Implemented Follow and Unfollow functionality using MongoDB and Mongoose
+- Created Followers and Following API endpoints for user relationship retrieval
+- Established social graph foundation required for feed personalization
+- Verified API functionality using Thunder Client and MongoDB shell
+- Cleaned inconsistent test data and ensured ObjectId-based references for user relationships
+
+Problems faced:
+- MongoDB shell (mongosh) was initially not recognized due to PATH configuration issues
+- Follow records were initially inserted using string IDs instead of ObjectIds, causing validation errors
+- Resolved by installing MongoDB Shell properly, updating environment PATH, and recreating follow records using valid MongoDB ObjectIds
 
