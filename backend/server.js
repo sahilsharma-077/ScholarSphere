@@ -14,6 +14,18 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+const repostRoutes = require('./routes/repostRoutes');
+app.use('/api/reposts', repostRoutes);
+
+const shareRoutes = require('./routes/shareRoutes');
+app.use('/api/shares', shareRoutes);
+
+const commentRoutes = require('./routes/commentRoutes');
+app.use('/api/comments', commentRoutes);
+
+const saveRoutes = require('./routes/saveRoutes');
+app.use('/api/saves', saveRoutes);
+
 const likeRoutes = require('./routes/likeRoutes');
 app.use('/api/likes', likeRoutes);
 

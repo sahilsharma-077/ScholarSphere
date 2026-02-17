@@ -161,4 +161,19 @@ Problems faced:
 - JSX placement errors while integrating LikeButton inside post rendering loop
 - Duplicate export error in Feed component causing build failure
 - Resolved by restructuring Feed component and ensuring a single default export
+_________________________________________________________________________________
+
+## Day 15
+- Implemented Save (Bookmark) system with backend model, API routes, and frontend Save button integration
+- Developed Comment system allowing users to write and view comments in real-time under posts
+- Added Share functionality with clipboard link copying and backend share tracking
+- Implemented Repost feature enabling users to repost existing content to their network
+- Integrated all engagement actions (Like, Save, Comment, Share, Repost) into the Feed UI
+- Established complete engagement signal layer required for recommendation engine development
+
+Problems faced:
+- JSX placement issues causing undefined variable errors while integrating new buttons
+- Backend–frontend code mix-up when React imports were mistakenly placed in backend model files
+- Route connection errors due to missing API registration in server configuration
+- Resolved by restructuring component placement, correcting backend model files, and properly registering API routes
 

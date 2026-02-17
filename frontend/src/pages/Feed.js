@@ -1,3 +1,7 @@
+import RepostButton from "../components/RepostButton";
+import CommentBox from "../components/CommentBox";
+import ShareButton from "../components/ShareButton";
+import SaveButton from "../components/SaveButton";
 import FollowButton from "../components/FollowButton";
 import LikeButton from "../components/LikeButton";
 import { useEffect, useState } from "react";
@@ -29,8 +33,26 @@ function Feed() {
           <p>{post.content}</p>
           <small>{new Date(post.createdAt).toLocaleString()}</small>
 
-          {/* Like Button */}
           <LikeButton
+            postId={post._id}
+            userId={currentUserId}
+          />
+<CommentBox
+  postId={post._id}
+  userId={currentUserId}
+/>
+<RepostButton
+  postId={post._id}
+  userId={currentUserId}
+/>
+
+<ShareButton
+  postId={post._id}
+  userId={currentUserId}
+/>
+
+
+          <SaveButton
             postId={post._id}
             userId={currentUserId}
           />
@@ -41,6 +63,3 @@ function Feed() {
 }
 
 export default Feed;
-
-
-
