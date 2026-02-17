@@ -97,4 +97,15 @@ Problems faced:
 - MongoDB shell (mongosh) was initially not recognized due to PATH configuration issues
 - Follow records were initially inserted using string IDs instead of ObjectIds, causing validation errors
 - Resolved by installing MongoDB Shell properly, updating environment PATH, and recreating follow records using valid MongoDB ObjectIds
+_____________________________________________________________________________
+
+## Day 10
+- Implemented personalized feed endpoint using follow-based filtering
+- Created feed route to fetch posts from users that the current user follows
+- Integrated Follow and Post models to generate dynamic user feeds
+- Tested personalized feed using Thunder Client with sample follow relationships and posts
+
+Problems faced:
+- Feed initially returned empty results due to missing follow relationships and test post data
+- Resolved by creating proper follow records and inserting sample posts with correct ObjectId references
 
