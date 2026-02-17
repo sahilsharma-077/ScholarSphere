@@ -73,4 +73,15 @@ ________________________________________________________________________________
 Problems faced:
 - Route testing errors due to incorrect HTTP methods (GET vs PUT)
 - Resolved by correctly using PUT for like endpoints and restarting server
+__________________________________________________________________________________________
+
+## Day 8
+- Implemented Edit Post functionality with owner authorization
+- Implemented Delete Post functionality with authorization checks
+- Added feed pagination for scalable post loading
+- Improved overall backend production readiness
+
+Problems faced:
+- Pagination understanding and testing issues
+- Resolved by implementing page query parameter testing (`?page=1`)
 

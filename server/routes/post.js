@@ -10,4 +10,7 @@ router.put("/like/:id", authMiddleware, postController.likePost);
 router.post("/comment/:id", authMiddleware, postController.commentPost);
 router.post("/share/:id", authMiddleware, postController.sharePost);
 
+router.put("/:id", authMiddleware, postController.updatePost);
+router.delete("/:id", authMiddleware, postController.deletePost);
+
 module.exports = router;
