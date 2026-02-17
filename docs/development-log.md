@@ -18,4 +18,14 @@ Problems faced:
 - Environment variables not loading correctly
 - Fixed by explicitly loading dotenv using:
   require("dotenv").config({ path: __dirname + "/.env" });
+______________________________________________________________________________
+
+## Day 3
+- Implemented user signup API
+- Added password hashing using bcrypt
+- Successfully stored users in MongoDB
+
+Problems faced:
+- req.body undefined due to incorrect JSON request
+- Fixed by setting request body type to JSON
 
