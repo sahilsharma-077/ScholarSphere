@@ -119,4 +119,18 @@ ______________________________________________________________________________
 Problems faced:
 - Duplicate posts appeared during initial merge testing
 - Resolved by separating following and non-following queries using $in and $nin filters
+_______________________________________________________________________________
+
+## Day 12
+- Integrated Socket.io for real-time chat functionality
+- Configured Express server to run with HTTP + Socket.io instance
+- Created Message and Conversation schemas for chat persistence
+- Implemented message API endpoints for sending and retrieving chat history
+- Enabled automatic message storage when messages are sent through Socket.io events
+- Verified real-time messaging and database persistence through testing
+
+Problems faced:
+- Server initialization error due to using Express app before declaration
+- Socket events initially transmitted messages but did not persist them in the database
+- Resolved by correcting server initialization order and saving messages inside socket event handler
 
