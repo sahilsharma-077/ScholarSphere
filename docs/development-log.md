@@ -61,4 +61,16 @@ ________________________________________________________________________________
 Problems faced:
 - Route connection issues due to incorrect server.js order
 - Fixed by registering routes before app.listen()
+__________________________________________________________________________________________
+
+## Day 7
+- Implemented post interaction features
+- Added Like Post API
+- Added Comment Post API
+- Implemented Share/Repost functionality
+- Updated Post schema to support likes, comments, and shared posts
+
+Problems faced:
+- Route testing errors due to incorrect HTTP methods (GET vs PUT)
+- Resolved by correctly using PUT for like endpoints and restarting server
 

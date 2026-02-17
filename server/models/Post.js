@@ -12,12 +12,20 @@ const PostSchema = new mongoose.Schema(
         required: true,
         trim: true
     },
+
     likes: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
     ],
+
+    sharedPost: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+        default: null
+    },   // <-- comma here
+
     comments: [
         {
             user: {
@@ -36,4 +44,3 @@ const PostSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Post", PostSchema);
-
