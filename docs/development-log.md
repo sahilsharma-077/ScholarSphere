@@ -50,4 +50,15 @@ ________________________________________________________________________________
 
 Problems faced:
 - Route path and middleware import issues resolved by restructuring routes folder
+_________________________________________________________________________________________
+
+## Day 6
+- Implemented community posts module
+- Created Post schema with likes and comments structure
+- Developed Create Post API (JWT protected)
+- Implemented Feed API to fetch all posts
+
+Problems faced:
+- Route connection issues due to incorrect server.js order
+- Fixed by registering routes before app.listen()
 

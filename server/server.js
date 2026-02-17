@@ -16,6 +16,12 @@ app.use(express.json());
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+const userRoutes = require("./routes/user");
+app.use("/api/user", userRoutes);
+
+const postRoutes = require("./routes/post");
+app.use("/api/posts", postRoutes);
+
 app.get("/", (req, res) => {
   res.send("ScholarSphere backend running");
 });
@@ -25,10 +31,8 @@ app.get("/api/protected", authMiddleware, (req, res) => {
   res.json({ message: "Protected data accessed successfully" });
 });
 
-// Start server
+// Start server (always LAST)
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-const userRoutes = require("./routes/user");
-app.use("/api/user", userRoutes);
