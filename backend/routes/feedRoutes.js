@@ -4,23 +4,30 @@ const router = express.Router();
 const Follow = require('../models/Follow');
 const Post = require('../models/Post');
 
-/* GET PERSONALIZED FEED */
 router.get('/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    // Step 1: find users the current user follows
+    /* STEP 1: Get following list */
     const following = await Follow.find({ followerId: userId });
-
-    // Step 2: extract IDs
     const followingIds = following.map(f => f.followingId);
 
-    // Step 3: fetch posts of those users
-    const posts = await Post.find({
+    /* STEP 2: Posts from followed users */
+    const followingPosts = await Post.find({
       userId: { $in: followingIds }
     }).sort({ createdAt: -1 });
 
-    res.json(posts);
+    /* STEP 3: Explore posts (exclude followed users AND self) */
+    const explorePosts = await Post.find({
+      userId: { $nin: [...followingIds, userId] }
+    })
+      .sort({ createdAt: -1 })
+      .limit(10);
+
+    /* STEP 4: Combine results */
+    const finalFeed = [...followingPosts, ...explorePosts];
+
+    res.json(finalFeed);
 
   } catch (err) {
     res.status(500).json(err);

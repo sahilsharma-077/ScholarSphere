@@ -108,4 +108,15 @@ _____________________________________________________________________________
 Problems faced:
 - Feed initially returned empty results due to missing follow relationships and test post data
 - Resolved by creating proper follow records and inserting sample posts with correct ObjectId references
+______________________________________________________________________________
+
+## Day 11
+- Upgraded personalized feed to hybrid feed (following + explore posts)
+- Implemented additional query to fetch recent posts from non-followed users
+- Combined following and explore posts into a single ordered feed response
+- Prepared feed architecture for future AI recommendation integration
+
+Problems faced:
+- Duplicate posts appeared during initial merge testing
+- Resolved by separating following and non-following queries using $in and $nin filters
 
