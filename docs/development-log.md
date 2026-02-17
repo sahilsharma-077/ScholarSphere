@@ -148,4 +148,17 @@ Problems faced:
 - Frontend server start errors caused by running commands outside the frontend directory
 - Feed initially displayed empty results due to missing follow relationships and test post data
 - Resolved by correcting file structure, restarting frontend server, and inserting valid follow/post records
+__________________________________________________________________________________
+
+## Day 14
+- Implemented Like data model for tracking user engagement on posts
+- Created Like and Unlike API endpoints for post interactions
+- Integrated Like button component into Feed UI
+- Connected frontend Like interaction with backend API
+- Verified Like records stored successfully in MongoDB for engagement tracking
+
+Problems faced:
+- JSX placement errors while integrating LikeButton inside post rendering loop
+- Duplicate export error in Feed component causing build failure
+- Resolved by restructuring Feed component and ensuring a single default export
 

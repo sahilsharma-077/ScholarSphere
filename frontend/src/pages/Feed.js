@@ -1,11 +1,12 @@
 import FollowButton from "../components/FollowButton";
+import LikeButton from "../components/LikeButton";
 import { useEffect, useState } from "react";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
 
   const currentUserId = "67b4a1f9e2a2c9c1b7b11111";
-  const targetUserId = "69944e8695f20758c67c2907"; // replace with real user id
+  const targetUserId = "69944e8695f20758c67c2907";
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/feed/${currentUserId}`)
@@ -18,7 +19,6 @@ function Feed() {
     <div>
       <h1>ScholarSphere Feed</h1>
 
-      {/* Follow button test */}
       <FollowButton
         currentUserId={currentUserId}
         targetUserId={targetUserId}
@@ -28,6 +28,12 @@ function Feed() {
         <div key={post._id} style={{border:"1px solid gray", margin:"10px", padding:"10px"}}>
           <p>{post.content}</p>
           <small>{new Date(post.createdAt).toLocaleString()}</small>
+
+          {/* Like Button */}
+          <LikeButton
+            postId={post._id}
+            userId={currentUserId}
+          />
         </div>
       ))}
     </div>
@@ -35,3 +41,6 @@ function Feed() {
 }
 
 export default Feed;
+
+
+

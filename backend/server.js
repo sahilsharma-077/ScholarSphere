@@ -14,6 +14,9 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+const likeRoutes = require('./routes/likeRoutes');
+app.use('/api/likes', likeRoutes);
+
 const feedRoutes = require('./routes/feedRoutes');
 app.use('/api/feed', feedRoutes);
 
