@@ -28,4 +28,16 @@ ______________________________________________________________________________
 Problems faced:
 - req.body undefined due to incorrect JSON request
 - Fixed by setting request body type to JSON
+____________________________________________________________________________________
+
+## Day 4
+- Implemented user login API with password verification using bcrypt
+- Added JWT authentication and token generation
+- Created protected routes using JWT middleware
+- Refactored authentication logic into MVC structure (controllers, routes)
+- Centralized MongoDB connection using config/db.js
+
+Problems faced:
+- Token validation initially failed due to incorrect header format
+- Middleware path issues resolved by creating proper middleware folder
 

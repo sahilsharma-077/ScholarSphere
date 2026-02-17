@@ -1,9 +1,13 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 
 const express = require("express");
-const mongoose = require("mongoose");
+const connectDB = require("./config/db");
+const authMiddleware = require("./middleware/authMiddleware");
 
 const app = express();
+
+// Connect database
+connectDB();
 
 // Middleware
 app.use(express.json());
@@ -16,14 +20,13 @@ app.get("/", (req, res) => {
   res.send("ScholarSphere backend running");
 });
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB connected (ScholarSphere)"))
-.catch(err => console.log(err));
+// Protected test route
+app.get("/api/protected", authMiddleware, (req, res) => {
+  res.json({ message: "Protected data accessed successfully" });
+});
 
 // Start server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
