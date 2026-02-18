@@ -14,6 +14,9 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+const notificationRoutes = require('./routes/notificationRoutes');
+app.use('/api/notifications', notificationRoutes);
+
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes);
 

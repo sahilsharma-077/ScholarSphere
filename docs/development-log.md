@@ -201,4 +201,17 @@ Problems faced:
 - Component resolution errors due to missing SuggestedUsers file in components directory
 - Import path issues causing module not found errors in Feed and Profile pages
 - Resolved by creating the component file in the correct directory and restarting the frontend server
+__________________________________________________________________________________
+
+## Day 18
+- Implemented notification system with Notification data model and API routes
+- Added automatic notification generation for user actions including likes, comments, follows, and reposts
+- Integrated notification fetching endpoint to retrieve user-specific notifications
+- Enabled frontend notification panel component for displaying activity alerts
+- Configured application routing using react-router-dom for multi-page navigation
+
+Problems faced:
+- Initial notification setup only fetched data without automatic creation on user actions
+- Route integration issues due to missing Notification model imports in engagement routes
+- Resolved by updating action routes to generate notifications dynamically and restarting backend services
 

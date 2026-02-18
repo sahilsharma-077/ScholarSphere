@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Like = require('../models/Like');
+const Notification = require('../models/Notification');
+
 
 /* LIKE POST */
 router.post('/:postId', async (req, res) => {
@@ -11,6 +13,12 @@ router.post('/:postId', async (req, res) => {
 
   await like.save();
   res.json(like);
+  await Notification.create({
+  userId: postOwnerId,     // receiver (post author)
+  type: "like",
+  message: "Someone liked your post"
+});
+
 });
 
 /* UNLIKE POST */
@@ -21,6 +29,12 @@ router.delete('/:postId', async (req, res) => {
   });
 
   res.json({ message: "Unliked" });
+  await Notification.create({
+  userId: postOwnerId,     // receiver (post author)
+  type: "unlike",
+  message: "Someone unliked your post"
+});
+
 });
 
 module.exports = router;

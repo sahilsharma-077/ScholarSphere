@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Follow = require('../models/Follow');
+const Notification = require('../models/Notification');
+
 
 /* FOLLOW USER */
 router.post('/:userId', async (req, res) => {
@@ -14,11 +16,20 @@ router.post('/:userId', async (req, res) => {
     const follow = new Follow({ followerId, followingId });
     await follow.save();
 
+    // CREATE NOTIFICATION
+    await Notification.create({
+      userId: followingId,
+      type: "follow",
+      message: "Someone started following you",
+      senderId: followerId
+    });
+
     res.json({ message: "Followed successfully" });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 /* UNFOLLOW USER */
 router.delete('/:userId', async (req, res) => {
@@ -28,27 +39,14 @@ router.delete('/:userId', async (req, res) => {
 
     await Follow.findOneAndDelete({ followerId, followingId });
 
+    // OPTIONAL: remove follow notification
+    await Notification.findOneAndDelete({
+      userId: followingId,
+      senderId: followerId,
+      type: "follow"
+    });
+
     res.json({ message: "Unfollowed successfully" });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-/* GET FOLLOWERS */
-router.get('/:userId/followers', async (req, res) => {
-  try {
-    const followers = await Follow.find({ followingId: req.params.userId });
-    res.json(followers);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-/* GET FOLLOWING */
-router.get('/:userId/following', async (req, res) => {
-  try {
-    const following = await Follow.find({ followerId: req.params.userId });
-    res.json(following);
   } catch (err) {
     res.status(500).json(err);
   }
