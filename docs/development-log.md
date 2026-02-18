@@ -189,4 +189,16 @@ Problems faced:
 - Initial follow button placement incorrectly implemented as global feed action instead of author-level interaction
 - Minor route logic adjustments required to ensure engagement counts were calculated correctly for scoring
 - Resolved by restructuring frontend Follow button placement and updating backend feed ranking logic
+__________________________________________________________________________________
+## Day 17
+- Implemented suggested users recommendation API based on mutual follow relationships
+- Added backend logic to filter already-followed users and return potential new connections
+- Created SuggestedUsers frontend component and integrated it into Feed and Profile pages
+- Enabled basic people recommendation system alongside engagement-based content recommendation
+- Improved frontend layout by preparing placement for sidebar user discovery panel
+
+Problems faced:
+- Component resolution errors due to missing SuggestedUsers file in components directory
+- Import path issues causing module not found errors in Feed and Profile pages
+- Resolved by creating the component file in the correct directory and restarting the frontend server
 

@@ -1,3 +1,5 @@
+import SuggestedUsers from "../components/SuggestedUsers";
+
 import RepostButton from "../components/RepostButton";
 import CommentBox from "../components/CommentBox";
 import ShareButton from "../components/ShareButton";
@@ -27,6 +29,10 @@ function Feed() {
 
       {posts.map(post => (
         <div key={post._id} style={{border:"1px solid gray", margin:"10px", padding:"10px"}}>
+          <div style={{marginTop: "30px"}}>
+  <SuggestedUsers userId={currentUserId} />
+</div>
+
           <FollowButton
       currentUserId={currentUserId}
       targetUserId={post.userId}
