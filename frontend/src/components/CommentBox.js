@@ -11,8 +11,9 @@ function CommentBox({ postId, userId }) {
   };
 
   useEffect(() => {
-    loadComments();
-  }, []);
+  loadComments();
+}, [postId]);
+
 
   const handleComment = async () => {
     await fetch(`http://localhost:5000/api/comments/${postId}`, {

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+
 const Comment = require('../models/Comment');
 const Notification = require('../models/Notification');
 const Post = require('../models/Post');
-
 
 /* ADD COMMENT */
 router.post('/:postId', async (req, res) => {
@@ -16,16 +16,24 @@ router.post('/:postId', async (req, res) => {
 
     await comment.save();
 
-    // FIND POST OWNER
     const post = await Post.findById(req.params.postId);
 
-    // CREATE NOTIFICATION
+    // avoid self-notification
     if (post && post.userId.toString() !== req.body.userId) {
-      await Notification.create({
+
+      const notification = await Notification.create({
         userId: post.userId,
         senderId: req.body.userId,
         type: "comment",
         message: "Someone commented on your post"
+      });
+
+      /* SOCKET EMIT */
+      const { io } = require('../server');
+
+      io.emit("notification", {
+        userId: notification.userId,
+        message: notification.message
       });
     }
 
@@ -36,8 +44,7 @@ router.post('/:postId', async (req, res) => {
   }
 });
 
-
-/* GET COMMENTS FOR A POST */
+/* GET COMMENTS FOR POST */
 router.get('/:postId', async (req, res) => {
   try {
     const comments = await Comment.find({ postId: req.params.postId })

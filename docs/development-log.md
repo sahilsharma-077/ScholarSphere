@@ -214,4 +214,17 @@ Problems faced:
 - Initial notification setup only fetched data without automatic creation on user actions
 - Route integration issues due to missing Notification model imports in engagement routes
 - Resolved by updating action routes to generate notifications dynamically and restarting backend services
+__________________________________________________________________________________
+
+## Day 19
+- Implemented real-time notification system using Socket.io
+- Integrated socket server initialization within backend server setup
+- Enabled automatic emission of live notification events for likes, comments, follows, and repost actions
+- Connected frontend notification component to socket server for instant updates without page refresh
+- Verified real-time multi-user interaction testing using dual-browser session simulation
+
+Problems faced:
+- Circular dependency issue while importing socket instance in route files
+- Route handler initialization errors due to incorrect router exports and imports
+- Resolved by restructuring socket export logic and applying safe dynamic socket access inside route handlers
 

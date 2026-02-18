@@ -4,7 +4,6 @@ const Repost = require('../models/Repost');
 const Notification = require('../models/Notification');
 const Post = require('../models/Post');
 
-
 /* CREATE REPOST */
 router.post('/:postId', async (req, res) => {
   try {
@@ -16,16 +15,23 @@ router.post('/:postId', async (req, res) => {
 
     await repost.save();
 
-    // FIND ORIGINAL POST
     const post = await Post.findById(req.params.postId);
 
-    // CREATE NOTIFICATION (avoid self notification)
     if (post && post.userId.toString() !== req.body.userId) {
-      await Notification.create({
+
+      const notification = await Notification.create({
         userId: post.userId,
         senderId: req.body.userId,
         type: "repost",
         message: "Someone reposted your post"
+      });
+
+      /* SAFE SOCKET ACCESS */
+      const { io } = require('../server');
+
+      io.emit("notification", {
+        userId: notification.userId,
+        message: notification.message
       });
     }
 
@@ -37,4 +43,3 @@ router.post('/:postId', async (req, res) => {
 });
 
 module.exports = router;
-

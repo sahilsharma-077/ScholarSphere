@@ -1,3 +1,5 @@
+import Notifications from "../components/Notifications";
+
 import SuggestedUsers from "../components/SuggestedUsers";
 
 import RepostButton from "../components/RepostButton";
@@ -12,7 +14,7 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   const currentUserId = "67b4a1f9e2a2c9c1b7b11111";
-  const targetUserId = "69944e8695f20758c67c2907";
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/feed/${currentUserId}`)
@@ -24,6 +26,8 @@ function Feed() {
   return (
     <div>
       <h1>ScholarSphere Feed</h1>
+      <Notifications userId={currentUserId} />
+
 
       
 
