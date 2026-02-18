@@ -176,4 +176,17 @@ Problems faced:
 - Backend–frontend code mix-up when React imports were mistakenly placed in backend model files
 - Route connection errors due to missing API registration in server configuration
 - Resolved by restructuring component placement, correcting backend model files, and properly registering API routes
+__________________________________________________________________________________
+
+## Day 16
+- Implemented rule-based recommendation engine for feed ranking using engagement signals (likes, saves, comments, shares, reposts, follow relationships)
+- Updated feed API to compute engagement-based post scores and return ranked posts instead of chronological ordering
+- Integrated engagement models (Like, Save, Comment, Share, Repost) into feed scoring logic
+- Corrected Follow button placement to appear per post author instead of globally on the feed
+- Verified dynamic ranking behavior and correct follow interaction tied to content authors
+
+Problems faced:
+- Initial follow button placement incorrectly implemented as global feed action instead of author-level interaction
+- Minor route logic adjustments required to ensure engagement counts were calculated correctly for scoring
+- Resolved by restructuring frontend Follow button placement and updating backend feed ranking logic
 
