@@ -23,13 +23,14 @@ function Feed() {
     <div>
       <h1>ScholarSphere Feed</h1>
 
-      <FollowButton
-        currentUserId={currentUserId}
-        targetUserId={targetUserId}
-      />
+      
 
       {posts.map(post => (
         <div key={post._id} style={{border:"1px solid gray", margin:"10px", padding:"10px"}}>
+          <FollowButton
+      currentUserId={currentUserId}
+      targetUserId={post.userId}
+    />
           <p>{post.content}</p>
           <small>{new Date(post.createdAt).toLocaleString()}</small>
 
